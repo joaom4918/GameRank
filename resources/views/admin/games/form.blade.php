@@ -1,8 +1,8 @@
  <label for="titulo">titulo</label>
-        <input type="text" name="titulo" class="form-control" placeholder="Digite titulo do jogo"> <br>
+        <input type="text" name="titulo" class="form-control" value="{{isset($registro->titulo)?$registro->titulo:''}}" placeholder="Digite titulo do jogo"> <br>
 
         <label for="ano_lancamento">ano de Lançamento</label>
-        <input type="number" name="ano_lancamento" class="form-control" placeholder="Digite o ano que o jogo foi lançado"> <br>
+        <input type="number" name="ano_lancamento" class="form-control" value="{{isset($registro->ano_lancamento)?$registro->ano_lancamento:''}}" placeholder="Digite o ano que o jogo foi lançado"> <br>
 
         <label for="plataforma">Plataforma</label> <br>
         <label>console</label>

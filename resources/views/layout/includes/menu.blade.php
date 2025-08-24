@@ -1,7 +1,7 @@
 <body>
    <nav class="navbar navbar-expand-lg bg-primary"> 
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Game Rank</a>
+    <a class="navbar-brand" href="#"><img src="https://cdn-icons-png.flaticon.com/128/4854/4854246.png" width="50" height="50">GameRank</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,6 +35,11 @@
         </li>
         
       </ul>
+
+       <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-success">Search</button>
+      </form>
     
     </div>
   </div>

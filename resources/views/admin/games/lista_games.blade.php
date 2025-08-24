@@ -6,7 +6,7 @@
     
 <h1>Lista de Jogos Cadastrados</h1>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped" id="tabela-games">
 
     <thead>
      <th>ID</th>
@@ -28,16 +28,26 @@
             <td> {{$registro->plataforma}} </td>
             <td> {{$registro->genero}} </td>
             <td><img src="{{asset('imagens_games/'.$registro->imagem)}}" height="100" width="100"></td>
-            <td><a href="#" class="btn btn-primary">editar</a>
-                <a href="#" class="btn btn-danger">excluir</a>
+            <td><a href="{{route('admin.games.editar_games',$registro->idgame)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                <a href="javascript:void(0)" onclick="confirmar_exclusao({{$registro->idgame}})" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
             
             </td>
-              </tr>  
-            @endforeach
-        
+            </tr>  
+
+            <script>
+          function confirmar_exclusao(idgame){
+            confirmacao=confirm("Deseja mesmo excluir o game {{$registro->titulo}}  ?");
+            if(confirmacao){
+            window.location.href="/admin/games/excluir_games/"+idgame;
+            }
+          } 
+          </script> 
+            @endforeach 
     </tbody>
 
+    
 </table>
+
 
 @endsection
 

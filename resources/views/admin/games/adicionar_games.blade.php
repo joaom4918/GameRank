@@ -8,6 +8,6 @@
         {{ csrf_field() }}
         @include('admin.games.form')
 
-    <button class="btn btn-primary">Salvar</button>
+    <button class="btn btn-primary"><i class="fas fa-save"> Salvar</i></button>
     </form>
 @endsection
