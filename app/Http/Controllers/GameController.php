@@ -14,30 +14,28 @@ class GameController extends Controller
         return view("admin.games.adicionar_games");
     }
 
+
+
     public function salvar_games(Request $req)
     {
 
         $dados = $req->all();
-
         if ($req->hasFile('imagem')) {
             $imagem = $req->file('imagem');
             $imagem_nome = time() . '-' . $imagem->getClientOriginalExtension();
             $imagem->move(public_path('imagens_games'), $imagem_nome);
             $dados['imagem'] = $imagem_nome;
         }
-
         #  // Converte o array de generos em string separada por vírgula
         if (isset($dados['genero']) && is_array($dados['genero'])) {
             $dados['genero'] = implode(',', $dados['genero']);
         }
-
         if (isset($dados['plataforma']) && is_array($dados['plataforma'])) {
 
             $dados['plataforma'] = implode(',', $dados['plataforma']);
         }
         Game::create($dados);
-
-        return redirect()->route("site.home");
+        return redirect()->route("admin.games.lista_games");
     }
 
     public function lista_games()
@@ -61,7 +59,7 @@ class GameController extends Controller
             }
         }
         $game->delete($dados);
-        return redirect()->route("site.home");
+        return redirect()->route("admin.games.lista_games");
     }
 
     public function editar_games($idgame)
@@ -90,6 +88,6 @@ class GameController extends Controller
             $dados['imagem'] = $imagem_nome;
         }
        $game->update($dados);
-        return redirect()->route('site.home');
+        return redirect()->route('admin.games.lista_games');
     }
 }

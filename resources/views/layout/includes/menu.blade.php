@@ -10,13 +10,38 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('site.home')}}"><i class="fas fa-home"> Pagina inicial</i></a> 
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('admin.games.adicionar_games')}}"><i class="fas fa-plus"> Adicionar Games</i></a>
-        </li> 
-          <li class="nav-item">
-          <a class="nav-link" href="{{route('admin.games.lista_games')}}"><i class="fas fa-gamepad"> Lista de Jogos</i></a>
+       
+
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <i class="fas fa-plus"> Adicionar</i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{route('admin.games.adicionar_games')}}"><i class="fas fa-plus"> Adicionar Games</i></a></li>
+            <li><a class="dropdown-item" href="{{route('admin.avaliacao.adicionar_nota')}}"><i class="fas fa-plus"> Adicionar Avaliação</i></a></li>
+          </ul>
         </li>
+
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <i class="fas fa-gamepad"> Listas</i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{route('admin.games.lista_games')}}"><i class="fas fa-gamepad"> Lista de Jogos</i></a></li>
+            <li><a class="dropdown-item" href="{{route('admin.avaliacao.lista_notas')}}"><i class="fas fa-gamepad"> Lista de Avaliações</i></a></li>
+          </ul>
+        </li>
+
+         
+       
+        <li class="nav-item">
+
+        </li>
+
         <li class="nav-item dropdown">
+          @auth
+              
+         
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            <i class="fas fa-user"> {{Auth::user()->name}} </i>
 
@@ -30,8 +55,16 @@
                     {{ __('Sair') }}
                 </button>
             </form> 
-            </a></li>
+            </a>
+          </li>
           </ul>
+             @endauth
+
+               @guest
+    <a class="nav-link" href="{{ route('login') }}">
+      <i class="fas fa-sign-in-alt"></i> Entrar
+    </a>
+  @endguest
         </li>
         
       </ul>
